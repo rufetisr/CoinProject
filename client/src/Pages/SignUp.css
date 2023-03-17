@@ -1,0 +1,56 @@
+
+
+.signup-div > form{
+    border: 1px solid rebeccapurple;
+    border-radius: 10px;
+    padding: 10px;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* flex-grow: 0.5; */
+    box-shadow: 1px 3px 9px 8px rebeccapurple;
+}
+
+form  label{
+    font-size: 13px;
+    margin-left: 3px;
+}
+
+.signup-div > form > input{
+    padding: 6px 7px;
+    border-radius: 5px;
+    border: 1px solid;
+    outline: none;
+    border-color: rebeccapurple;
+}
+
+
+.signup-div > form > .btn-div{
+    display: flex;
+    justify-content: center;
+}
+
+.signup-div > form  button{
+    width: 80%;
+    text-align: center;
+    padding: 4px 9px;
+    border-radius: 10px;
+    border: none;
+    background-color: rebeccapurple;
+    color: #fff;    
+    cursor: pointer;
+    box-shadow: 7px 9px 28px 1px rgba(0, 0, 0, 0.24);
+    transition: 0.2s;
+}
+
+.signup-div > form  button:active{
+    transform: scale(0.85);
+    box-shadow: 3px 2px 25px 1px rgba(0,0,0,0.35);
+}
+
+
+.error{
+    box-sizing: border-box;
+    font-size: 12px;
+    color: red;
+    margin-left: 3px;
+}

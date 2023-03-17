@@ -1,0 +1,109 @@
+{
+    "commemorative": [
+        {
+            "name": "Canadian Beaver",
+            "shortDesc": "\"Canadian beaver\". Unique coin with the image of a beaver. Face value - 5 cents. Created under Elizabeth II.",
+            "longDesc": "In the center of the obverse is a portrait of Queen Elizabeth II, the profile is directed to the right. The inscription on the left semicircle (English) ELIZABETH II, on the right semicircle D · G · REGINA (ELIZABETH II QUEEN by the Grace of GOD) with dots. Below is a mint mark.        In the center of the coin reverse is a Canadian beaver on a rock sticking out of the water. At the top is a semicircle with the inscription \"5 cents\" between two maple leaves. At the bottom in two lines is the inscription CANADA (CANADA) and the year of minting.",
+            "country": "CANADA",
+            "composition": "nickel",
+            "quality": "BU ",
+            "denomination ": "5 cents",
+            "Year": "1965",
+            "Weight": "4.54",
+            "Price": "40",
+            "imgFr": "https://drive.google.com/file/d/1s6UuLRCVMBuQ7k_gyGeju1GoFcXYZ1PU/view?usp=share_link",
+            "imgBk": "https://drive.google.com/file/d/1ZwnmGFTOcTY9doh4EKATSYfQPHio9aME/view?usp=share_link"
+        },
+        {
+            "name": "Looney",
+            "shortDesc": "\"Looney\". Unique coin with the image of a goat. Canadian dollar symbol.",
+            "longDesc": "The reverse of the coin depicts a black goat - a symbol of Canada and an inscription divided into the lower and upper semicircle \"Canadian dollar\". The obverse depicts Queen Elizabeth II. The inscription on the left semicircle (English) ELIZABETH II, on the right semicircle D · G · REGINA (ELIZABETH II QUEEN by the Grace of GOD) with dots. Below is the year of coinage.",
+            "country": "CANADA",
+            "composition": "gold",
+            "quality": "BU ",
+            "denomination ": "1 dollar",
+            "Year": "1970",
+            "Weight": "5.4",
+            "Price": "65",
+            "imgFr": "https://drive.google.com/file/d/1LYbXHCwVm9VSBUcPg31dwDeN8eiTFXgV/view?usp=share_link",
+            "imgBk": "https://drive.google.com/file/d/1h-vM3ita-kzLdmEM_nCNNafmtw7Edy_2/view?usp=share_link"
+        },
+        {
+            "name": "Jefferson",
+            "shortDesc": "Unique coin featuring Thomas Jefferson, the 3rd American president. Face value - 5 cents.",
+            "longDesc": "The obverse of the coin depicts a bust of the 3rd American president, Thomas Jefferson. The inscription on the right semicircle \"IN GOD WE TRUST\". Below is the inscription “FREEDOM” and the year of minting. Under the image of Jefferson was a monogram of an engraver. The initials of the engraver FS first appeared on coins in 1966. The reverse side shows the Jefferson Monticello estate, as well as the inscription: on the top - the motto “E PLURIBUS UNUM”, on the bottom - the inscriptions “MONTICELLO”, “FIVE CENTS” and “UNITED STATES OF AMERICA”.",
+            "country": "UNITED STATES OF AMERICA",
+            "composition": "nickel",
+            "quality": "BU ",
+            "denomination ": "5 cents",
+            "Year": "1966",
+            "Weight": "3.54",
+            "Price": "35",
+            "imgFr": "https://drive.google.com/file/d/1au3NY6k5_zY0y0z2F3-aRsls89b1uBL0/view?usp=share_link",
+            "imgBk": "https://drive.google.com/file/d/1_XTWbkK-Vc3zEl58S9_n7d_AzYBvxFin/view?usp=share_link"
+        }
+    ],
+    "bullion": [
+        {
+            "name": "South Vietnamese Dong",
+            "shortDesc": "Currency of the Republic of Vietnam in 1955-1975 Coin with the image of wheat",
+            "longDesc": "Currency of the Republic of Vietnam in 1955-1975. On the front side, we see wheat, and on the back, a unit symbolizing money.The monetary unit of South Vietnam was originally the Indochinese piastre, issued by the Institute of Emissions of the States of Cambodia, Laos and Vietnam. Banknotes of the graduating institute were issued in three types: Cambodian, Lao and Vietnamese. The inscriptions on the banknotes of all samples were made in four languages: French, Khmer, Lao and Vietnamese. Vietnamese-style banknotes depicted a pattern, as well as the inscription “VIÊN PHÁT-HÀNH”. Piastres previously issued by the French Bank of Indochina were also in circulation.",
+            "country": "the Republic of Vietnam",
+            "composition": "nickel",
+            "quality": "BU ",
+            "denomination ": "1 dong",
+            "Year": "1955",
+            "Weight": "5.05 g",
+            "Price": "56$",
+            "imgFr": "https://drive.google.com/file/d/1-pYQE1EDzM7e-Pe6WMRAnMcM4wITQk6I/view?usp=share_link",
+            "imgBk": "https://drive.google.com/file/d/1dnkMbyZz1QemM1IE6V06fjXB6MhMa3fK/view?usp=share_link"
+        },
+        {
+            "name": "The British Antelope",
+            "shortDesc": "Unique coin depicting an antelope. British South African gold coin with a face value of 1/2 pound. It has been produced since 1952.",
+            "longDesc": "On one side of the coin is the head of King George VI, turned to the left. Also at the top in a semicircle is the inscription GEORGIVS SEXTVS REX. On the other side of the coin is an Antelope. Around it is the inscription SOUTH AFRICA 1952 SUID AFRICA, dotted with dots. Below is the nominal value.",
+            "country": "British South Africa",
+            "composition": "gold",
+            "quality": "BU ",
+            "denomination": "1/2 pound",
+            "Year": "1952",
+            "Weight": "6.3 g",
+            "Price": "78$",
+            "imgFr": "https://drive.google.com/file/d/1uA3P7TqFNqSP-7nRUqF04WC_rN24fT1V/view?usp=share_link",
+            "imgBk": "https://drive.google.com/file/d/1VCXmpnTq7sZt_MFBeVbonGaazS-tKpJ4/view?usp=share_link"
+        },
+        {
+            "name": "Cron",
+            "shortDesc": "A unique coin depicting a Knorr Viking ship at sea.",
+            "longDesc": "Coin 1 crown was issued from August 1, 1934 to March 25, 1941, during the first period of Estonia’s independence.On the obverse of the coin in the center is a large state seal, the emblem of Estonia, crowned with an arched text with the inscription “Eesti Vabariik”, and on the lower edge - the year of issue “1934”. The reverse depicts a Viking ship Knarr in the sea, under which appears the inscription 1 crown. In 2012, a single crown coin.1934 was recognized as \"the most beautiful coin ever circulated in Estonia.\"",
+            "country": "Estonia",
+            "composition": "gold",
+            "quality": "BU ",
+            "denomination": "1/2 pound",
+            "Year": "1934",
+            "Weight": "5.67 g",
+            "Price": "79$",
+            "imgFr": "https://drive.google.com/file/d/13su28EBw_RNvAQq4gY56aXCxl5_AVN4c/view?usp=share_link",
+            "imgBk": "https://drive.google.com/file/d/1tfVPwQ79igx92-s89SGuEVi59NHyPEvc/view?usp=share_link"
+        }
+    ],
+    "exclusive": [
+        {
+            "name": "Lion sedge",
+            "shortDesc": "Indian coin with the image of a lion Ashoka. Face value 1 one rupee. 1975 edition.",
+            "longDesc": "It depicts the lion Ashok on his pedestal. It is surrounded by the inscription of the name of the country in two languages, meaning and date, surrounded by stylized stalks of grain. The rupee (from Sanskrit silver) is an Indian historical silver coin, put into circulation in the 15th century, as well as the monetary unit of a number of countries in South Asia. After the British conquest of Burma in 1852, the Indian rupee became its currency. In 1938, Burma became an independent British colony. A year earlier, the release of the Burmese rupee, which lasted until 1952, began. In 1952, the Burmese rupee was replaced by a kyat. The rupee remained the currency of Portuguese possessions in India until 1959, when it was replaced by the escudos of Portuguese India",
+            "country": "India",
+            "composition": "steel",
+            "quality": "BU ",
+            "denomination": "1 rupee",
+            "Year": "1975",
+            "Weight": "4.95 g",
+            "Price": "76$",
+            "imgFr": "https://drive.google.com/file/d/1f4Vjewxll8G2K-MpBqOrS2HcZwoneL0A/view?usp=share_link",
+            "imgBk": "https://drive.google.com/file/d/1ui9GSm17VoFSqbyWG7FKl7gGlxin1t3F/view?usp=share_link"
+        },
+        {
+
+        }
+    ]
+}

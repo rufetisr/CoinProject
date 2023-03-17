@@ -1,0 +1,26 @@
+.list-coin{
+    height: 100vh;
+    /* position: relative; */
+    /* top: 100px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    padding: 13px;
+    height: 100%;
+}
+
+.coin-img{
+    width: 150px;
+    height: 150px;
+}
+
+.coin{
+    width: 100%;
+    margin-top: 20px;
+}
+
+a{
+    text-decoration: none;
+}
