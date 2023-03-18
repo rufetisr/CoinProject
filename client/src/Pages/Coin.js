@@ -29,18 +29,18 @@ const Coin = () => {
     // }, []);
 
     let getCoins = async () => {
-        var arr = [];
+        // var arr = [];
         let urlRoute = window.location.pathname;
         let res = axios.get(`http://localhost:400${urlRoute}`);
         res.then(res => {
             console.log(res.data);
             setCoins(res.data)
         });
-        console.log(arr);
+        // console.log(arr);
         // setCoins(arr);
     }
     useEffect(() => {
-        console.log('useeffect');
+        console.log('useeffect coins');
         getCoins();
     }, []);
 

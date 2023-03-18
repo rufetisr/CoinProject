@@ -1,0 +1,75 @@
+.coin-det {
+    margin-top: 61px;
+    padding: 13px;
+    width: 100%;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.flex {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.detail {
+    font-size: 14px;
+    background-color: gainsboro;
+    /* width: 100px; */
+    /* width: 60%; */
+    /* max-width: 380px; */
+    min-width: 200px;
+    max-width: 490px;
+    /* width: 100%; */
+    box-sizing: border-box;
+    height: fit-content;
+    padding: 7px 13px;
+    
+}
+
+.imgs {
+    display: flex;
+    flex-direction: column;
+    max-width: 217px;
+    /* width: 50%; */
+}
+
+img {
+    /* width: 160px; */
+    /* height: 50%; */
+    min-width: 125px;
+    width: 100%;
+    /* max-height: 201px; */
+    /* min-width: 178px; */
+    object-fit: contain;
+    padding: 10px 2px;
+    box-sizing: border-box;
+}
+
+table{
+    margin: 0px;
+    width: 100%;
+}
+table, td{
+    /* border-left: 1px solid black; */
+    border-collapse: collapse;    
+    /* width: max-content; */
+}
+
+td{
+
+    /* width: max-content; */
+    padding: 5px;
+    /* border-right: 1px solid black; */
+}
+
+td:nth-child(1){
+    border-right: 1px solid rgb(196, 189, 189);
+}
+
+tr:nth-child(odd){
+    background-color: #fff;
+}

@@ -22,15 +22,15 @@ function Home() {
 
     return (
         <div className="home">
-            <h1>Homepage</h1>
+            <h1 className="home-h1">Homepage</h1>
             <Search />
             <div style={{ display: 'flex', justifyContent: 'space-evenly', flexWrap: 'wrap' }}>
                 {coinTypes.map((item, index) => {
                     return (
                         <div key={index}>
-                            <p>{item.Name.charAt(0).toUpperCase() + item.Name.slice(1)} coins</p>
+                            <p>{item.TypeName.charAt(0).toUpperCase() + item.TypeName.slice(1)} coins</p>
                             <Link to={item.Path}>All</Link><br></br>
-                            <img id="coin-img" src={item.Img} alt={item.Name.substring(0, 6)} ></img>
+                            <img id="coin-img" src={item.Img} alt={item.TypeName.substring(0, 6)} ></img>
                         </div>)
                 })}
             </div>

@@ -76,7 +76,7 @@ app.get('/commemorative', (req, res) => {
     connection.query(`select C.*
     from Coin C inner join CoinType CT
     On C.TypeId = CT.TypeId
-    where CT.Name = 'Commemorative';`, (err, data) => {
+    where CT.TypeName = 'Commemorative';`, (err, data) => {
         if (!err) {
             // console.log(data);
             return res.status(200).json(data);
@@ -88,7 +88,7 @@ app.get('/bullion', (req, res) => {
     connection.query(`select C.*
     from Coin C inner join CoinType CT
     On C.TypeId = CT.TypeId
-    where CT.Name = 'Bullion';`, (err, data) => {
+    where CT.TypeName = 'Bullion';`, (err, data) => {
         if (!err) {
             console.log(data);
             return res.status(200).json(data);
@@ -100,7 +100,7 @@ app.get('/exclusive', (req, res) => {
     connection.query(`select C.*
     from Coin C inner join CoinType CT
     On C.TypeId = CT.TypeId
-    where CT.Name = 'Exclusive';`, (err, data) => {
+    where CT.TypeName = 'Exclusive';`, (err, data) => {
         if (!err) {
             return res.status(200).json(data);
         }
@@ -111,8 +111,9 @@ app.get('/exclusive', (req, res) => {
 // let coinTypes = [];
 let coins = [];
 
-//select coin types when server is running
-
+//select coins when server is running
+//burda 2 table-i birlesdiririk, eyni column-lardan sonuncunu goturecek, mes 
+//2 table-da da Name adli column var, ona gore COinType table-in Name -ni goturecek.
 connection.query(`select *
     from Coin C inner join CoinType CT
     On C.TypeId = CT.TypeId;`, (err, data) => {
@@ -126,6 +127,7 @@ connection.query(`select *
     }
 });
 
+//app -de route-lar ucun /bullion/4, /bullion/5, ...
 app.get('/', (req, res)=>{
     res.send(coins);
 })
@@ -141,7 +143,7 @@ app.get('/', (req, res)=>{
 
 // get coin details that gives type & id
 app.get(`/:type/:id`, (req, res) => {
-    console.log(coins);
+    // console.log(coins);
     let { type, id } = req.params;
     id = parseInt(id);
     // console.log(typeof id);
@@ -162,7 +164,7 @@ app.get(`/:type/:id`, (req, res) => {
     // coin != undefined ? res.status(200).send(coin) : res.status(404).send('Not found coin on this id');
 
     let isFind = coins.find((item) => {
-        return item.Name == type && item.CoinId == id;
+        return item.TypeName == type && item.CoinId == id;
     })
 
     isFind != undefined ? res.status(200).send(isFind) : res.status(404).send("Not found coin on this coin type and id");
