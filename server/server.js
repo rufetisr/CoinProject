@@ -1,4 +1,4 @@
-const { urlencoded } = require('express');
+// const { urlencoded } = require('express');
 let exp = require('express');
 let fs = require('fs');
 let app = exp();
@@ -8,8 +8,11 @@ let cors = require('cors');
 
 app.use(cors());
 app.use(exp.json());
-app.use(urlencoded({ extended: true }));
+app.use(exp.urlencoded({ extended: true }));
 
+app.listen(400, () => {
+    console.log('Server on port 400');
+})
 // imgFr, imgBk src url-i deyisdirmek Database-de
 // fs.readFile('./server/coinTypes.json', (err, data) => {
 //     if (!err) {
@@ -192,9 +195,7 @@ app.get('/api', (req, res) => {
 //     })
 // })
 
-app.listen(400, () => {
-    console.log('Server on port 400');
-})
+
 
 
 // app.get('/coins', (req, res) => {
