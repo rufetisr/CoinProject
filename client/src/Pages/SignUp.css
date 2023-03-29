@@ -1,4 +1,13 @@
+.signup-div{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
+    font-size: large;
+
+}
 
 .signup-div > form{
     border: 1px solid rebeccapurple;
@@ -30,7 +39,7 @@ form  label{
 }
 
 .signup-div > form  button{
-    width: 80%;
+    width: 60%;
     text-align: center;
     padding: 4px 9px;
     border-radius: 10px;

@@ -9,17 +9,19 @@ import Coin from './Pages/Coin';
 // import Search from './Components/Search';
 import CoinDetails from './Pages/CoinDetails';
 import axios from 'axios';
+import SignUp from './Pages/SignUp';
 
 function App() {
-  const [coins, setCoins] = useState([]);
-  const [coinTypes, setCoinTypes] = useState([]);
-  const [coinOfTypes, setCoinOfTypes] = useState([]);
+  const [coins, setCoins] = useState([]); // list coins
+  const [coinTypes, setCoinTypes] = useState([]); // coin types
+  const [coinOfTypes, setCoinOfTypes] = useState([]); // for routes to details
   const [coin, setCoin] = useState({}); // coin detail
 
   const [user, setUser] = useState({
     email: '',
     username: '',
-    password: ''
+    password: '',
+    login: false
   });
 
   let data = {
@@ -38,6 +40,7 @@ function App() {
         res1.then(res => setCoinTypes(res.data));
 
   }, []);
+
   return (
 
     <Context.Provider value={data}>
@@ -45,6 +48,7 @@ function App() {
         <Header />
         <Routes>
           <Route path='/' element={<Home />}></Route>
+          <Route path='/sign-up' element={<SignUp />}></Route>
           {
             coinTypes.map((item) => {
               return(

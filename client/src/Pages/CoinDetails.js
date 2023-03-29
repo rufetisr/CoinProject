@@ -12,8 +12,8 @@ const CoinDetails = () => {
         url = window.location.pathname; // /bullion/5
         let res = axios.get(`http://localhost:400${url}`);
         res.then(res => setCoin(res.data));
-
     }
+    
     useEffect(() => {
         console.log('useeffect details');
         getCoin();
@@ -66,7 +66,7 @@ const CoinDetails = () => {
                             </tr>
                         </tbody>
                     </table>
-                    <br></br>
+                    <br></br>                    
                     <Link to ={url.substring(0, url.lastIndexOf('/'))}>Back to the list</Link>
                 </div>
 

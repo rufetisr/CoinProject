@@ -9,13 +9,13 @@ function Home() {
     let { coinTypes, setCoinTypes } = useContext(context);
 
     let getCoinTypes = async () => {
-        let res = axios.get('http://localhost:400/cointypes');
-        res.then(res => setCoinTypes(res.data));
+        // let res = axios.get('http://localhost:400/cointypes');
+        // res.then(res => setCoinTypes(res.data));
         // return res;
     }
     useEffect(() => {
         console.log('home useffect');
-        getCoinTypes();
+        // getCoinTypes();
 
     }, []);
 

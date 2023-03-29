@@ -52,10 +52,10 @@ app.post('/signup', (req, res) => {
     ('${email}', '${username}', '${password}');`, (err, result) => {
         if (!err) {
             console.log(result);
-            res.status(200).send('Success added')
+            res.status(200).send('Success')
         }
         else {
-            res.status(500).send();
+            res.status(500).send(err);
         }
     })
     // res.status(200).send('Success Sign up');
@@ -75,41 +75,44 @@ app.get('/cointypes', (req, res) => {
     })
 })
 
-app.get('/commemorative', (req, res) => {
+// get coins list for this type
+app.get('/:type', (req, res) => {
+    let { type } = req.params;
+
     connection.query(`select C.*
     from Coin C inner join CoinType CT
     On C.TypeId = CT.TypeId
-    where CT.TypeName = 'Commemorative';`, (err, data) => {
+    where CT.TypeName = '${type}';`, (err, data) => {
         if (!err) {
             // console.log(data);
             return res.status(200).json(data);
         }
-        return res.status(500).send();
+        return res.status(500).send('Not found');
     })
 })
-app.get('/bullion', (req, res) => {
-    connection.query(`select C.*
-    from Coin C inner join CoinType CT
-    On C.TypeId = CT.TypeId
-    where CT.TypeName = 'Bullion';`, (err, data) => {
-        if (!err) {
-            console.log(data);
-            return res.status(200).json(data);
-        }
-        return res.status(500).send();
-    })
-})
-app.get('/exclusive', (req, res) => {
-    connection.query(`select C.*
-    from Coin C inner join CoinType CT
-    On C.TypeId = CT.TypeId
-    where CT.TypeName = 'Exclusive';`, (err, data) => {
-        if (!err) {
-            return res.status(200).json(data);
-        }
-        return res.status(500).send();
-    })
-})
+// app.get('/bullion', (req, res) => {
+//     connection.query(`select C.*
+//     from Coin C inner join CoinType CT
+//     On C.TypeId = CT.TypeId
+//     where CT.TypeName = 'Bullion';`, (err, data) => {
+//         if (!err) {
+//             console.log(data);
+//             return res.status(200).json(data);
+//         }
+//         return res.status(500).send();
+//     })
+// })
+// app.get('/exclusive', (req, res) => {
+//     connection.query(`select C.*
+//     from Coin C inner join CoinType CT
+//     On C.TypeId = CT.TypeId
+//     where CT.TypeName = 'Exclusive';`, (err, data) => {
+//         if (!err) {
+//             return res.status(200).json(data);
+//         }
+//         return res.status(500).send();
+//     })
+// })
 
 // let coinTypes = [];
 let coins = [];
@@ -120,6 +123,7 @@ let coins = [];
 connection.query(`select *
     from Coin C inner join CoinType CT
     On C.TypeId = CT.TypeId;`, (err, data) => {
+        // console.log('get coins');
     if (!err) {
         coins = data;
         console.log(coins);

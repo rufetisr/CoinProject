@@ -4,7 +4,7 @@ import context from '../Context/Context';
 import axios from 'axios';
 
 function SignUp() {
-    const { user, setUser } = useContext(context);
+    let { user, setUser } = useContext(context);
 
     const [err1, seterr1] = useState();
     const [err2, seterr2] = useState();
@@ -14,6 +14,7 @@ function SignUp() {
 
     let onSubmit = (e) => {
         e.preventDefault();
+       
         // console.log(err1 + '\n' + err2 + '\n' + err3);
         if (containsOnlySpaces(user.email) && containsOnlySpaces(user.username) &&
             containsOnlySpaces(user.password)) {
@@ -38,9 +39,27 @@ function SignUp() {
             let res = axios.post('http://localhost:400/signup', {
                 user
             })
+            res.then(res => {
+                if (res.status == 200) {
+                    alert('Success added user');
+                }
+                else{
+                    alert('Not success');
+                }
+            })
+            e.target.email.value = '';
+            e.target.username.value = '';
+            e.target.password.value = '';
+           user = {
+                email: '',
+                username: '',
+                password: ''            
+            };
+           
             console.log(res.then(res => console.log(res.data)));
-        }
 
+        }
+         
         console.log('submit');
     }
 
@@ -122,6 +141,7 @@ function SignUp() {
 
     return (
         <div className='signup-div'>
+            <h2>Sign Up</h2>
             <form onSubmit={onSubmit}>
 
                 <label>
@@ -145,7 +165,6 @@ function SignUp() {
 
                 <div className='btn-div'>
                     <button type='submit'>Sign Up</button>
-
                 </div>
             </form>
         </div>
