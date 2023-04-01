@@ -3,6 +3,9 @@
     height: 150px;
 }
 
+#coin-img:hover{
+    transform: scale(1.1);
+}
 .home-h1{
     position: relative;
     top: 61px;

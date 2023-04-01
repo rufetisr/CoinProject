@@ -14,7 +14,7 @@ function SignUp() {
 
     let onSubmit = (e) => {
         e.preventDefault();
-       
+
         // console.log(err1 + '\n' + err2 + '\n' + err3);
         if (containsOnlySpaces(user.email) && containsOnlySpaces(user.username) &&
             containsOnlySpaces(user.password)) {
@@ -24,6 +24,7 @@ function SignUp() {
         }
         else if (containsOnlySpaces(user.email) && containsOnlySpaces(user.username)) {
             seterr1('Required Email')
+            seterr2('Required Username')
         }
         else if (containsOnlySpaces(user.email) && containsOnlySpaces(user.password)) {
             seterr1('Required Email')
@@ -43,23 +44,24 @@ function SignUp() {
                 if (res.status == 200) {
                     alert('Success added user');
                 }
-                else{
-                    alert('Not success');
+                else {
+                    alert('Not success!');
                 }
             })
             e.target.email.value = '';
             e.target.username.value = '';
             e.target.password.value = '';
-           user = {
+
+            setUser({
                 email: '',
                 username: '',
-                password: ''            
-            };
-           
+                password: ''
+            });
+
             console.log(res.then(res => console.log(res.data)));
 
         }
-         
+
         console.log('submit');
     }
 
@@ -147,7 +149,7 @@ function SignUp() {
                 <label>
                     Email:
                 </label><br></br>
-                <input type='email' name='email' placeholder='Email' onChange={ChangeInput} minLength='4' maxLength='30' />
+                <input type='email' name='email' placeholder='Email' onChange={ChangeInput} minLength='4' maxLength='40' />
                 <div className='error' >{err1}</div>
                 <br></br>
                 <label>

@@ -6,12 +6,15 @@ header{
     width: 100%;
     z-index: 1;
     top: 0px;
+
 }
 
 header a{
     text-decoration: none;
     color: #fff;
 }
+
+
 
 ul{
     display: flex;

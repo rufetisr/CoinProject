@@ -24,10 +24,10 @@ function Home() {
         <div className="home">
             <h1 className="home-h1">Homepage</h1>
             <Search />
-            <div style={{ display: 'flex', justifyContent: 'space-evenly', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-evenly', flexWrap: 'wrap', columnGap: "50px" }}>
                 {coinTypes.map((item, index) => {
                     return (
-                        <div key={index}>
+                        <div key={index} id="type-item">
                             <p>{item.TypeName.charAt(0).toUpperCase() + item.TypeName.slice(1)} coins</p>
                             <Link to={item.Path}>All</Link><br></br>
                             <img id="coin-img" src={item.Img} alt={item.TypeName.substring(0, 6)} ></img>

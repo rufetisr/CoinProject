@@ -4,6 +4,7 @@ let fs = require('fs');
 let app = exp();
 let connection = require('./db');
 let cors = require('cors');
+const { log } = require('console');
 // const { log } = require('console');
 
 app.use(cors());
@@ -60,6 +61,45 @@ app.post('/signup', (req, res) => {
     })
     // res.status(200).send('Success Sign up');
     // res.send('Api running');
+})
+
+app.post('/login', (req, res) => {
+    let { name, password } = req.body;
+
+    connection.query(`select * from
+    users;`, (err, data) => {
+        if (!err) {
+            console.log(data);
+            // res.send(data);
+            let user = data.find((item) => {
+                return (item.Email == name || item.Username == name) && item.Password == password;
+            })
+
+            //    else{
+            //     console.log("Not found!!!!");            
+            //    }
+            // user-in id-sini change edib gonderdik
+            if (user != undefined) {
+                user = {
+                    ...user,
+                    UserId: 45444 + user.UserId
+                }
+                res.status(200).send(user);
+            }
+            else {
+                try {
+                    throw res.status(404).send(`Not Found this user!`);
+                } catch (error) {
+                    console.log("Not found user");
+                }
+            }
+
+
+        }
+        else {
+            res.status(500).send();
+        }
+    })
 })
 
 app.get('/cointypes', (req, res) => {
@@ -123,7 +163,7 @@ let coins = [];
 connection.query(`select *
     from Coin C inner join CoinType CT
     On C.TypeId = CT.TypeId;`, (err, data) => {
-        // console.log('get coins');
+    // console.log('get coins');
     if (!err) {
         coins = data;
         console.log(coins);
@@ -135,7 +175,7 @@ connection.query(`select *
 });
 
 //app -de route-lar ucun /bullion/4, /bullion/5, ...
-app.get('/', (req, res)=>{
+app.get('/', (req, res) => {
     res.send(coins);
 })
 // connection.query(`select *

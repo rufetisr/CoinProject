@@ -10,6 +10,7 @@ import Coin from './Pages/Coin';
 import CoinDetails from './Pages/CoinDetails';
 import axios from 'axios';
 import SignUp from './Pages/SignUp';
+import SignIn from './Pages/SignIn';
 
 function App() {
   const [coins, setCoins] = useState([]); // list coins
@@ -17,11 +18,14 @@ function App() {
   const [coinOfTypes, setCoinOfTypes] = useState([]); // for routes to details
   const [coin, setCoin] = useState({}); // coin detail
 
-  const [user, setUser] = useState({
-    email: '',
-    username: '',
-    password: '',
-    login: false
+  let [user, setUser] = useState({
+    email: '', // sign-up
+    username: '', // sign-up
+    password: '', // sign-up
+    emailorname: "", // sign-in
+    logpassword: "", // sign-in
+    login: false,
+    imgUrl: '',
   });
 
   let data = {
@@ -49,6 +53,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />}></Route>
           <Route path='/sign-up' element={<SignUp />}></Route>
+          <Route path='/sign-in' element={<SignIn />}></Route>
           {
             coinTypes.map((item) => {
               return(
