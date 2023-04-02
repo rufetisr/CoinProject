@@ -56,7 +56,11 @@ app.post('/signup', (req, res) => {
             res.status(200).send('Success')
         }
         else {
-            res.status(500).send(err);
+            try {
+                throw res.status(500).send(err);
+            } catch (error) {
+                console.log(error);
+            }
         }
     })
     // res.status(200).send('Success Sign up');

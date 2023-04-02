@@ -9,8 +9,20 @@ function SignUp() {
     const [err1, seterr1] = useState();
     const [err2, seterr2] = useState();
     const [err3, seterr3] = useState();
+    const [hide, setHide] = useState("password");
+    const [text, setText] = useState("Show"); // password show or hide
 
 
+    let ShowOrHide = (e)=>{
+       if (e.target.checked) {
+        setHide("text");
+        setText("Hide")
+       }
+       else{
+        setHide("password");
+        setText("Show")
+       }
+    }
 
     let onSubmit = (e) => {
         e.preventDefault();
@@ -44,8 +56,9 @@ function SignUp() {
                 if (res.status == 200) {
                     alert('Success added user');
                 }
-                else {
-                    alert('Not success!');
+            }).catch((err) => {
+                if (err.response.data.errno == 1062) {
+                    alert("These entries were found in another user!");
                 }
             })
             e.target.email.value = '';
@@ -58,7 +71,7 @@ function SignUp() {
                 password: ''
             });
 
-            console.log(res.then(res => console.log(res.data)));
+            // console.log(res.then(res => console.log(res.data)));
 
         }
 
@@ -67,7 +80,12 @@ function SignUp() {
 
 
     function containsOnlySpaces(str) {
-        return str.trim().length == 0;
+        if (str == undefined) {
+            return true;
+        }
+        else {
+            return str.trim().length == 0;
+        }
     }
 
 
@@ -159,10 +177,17 @@ function SignUp() {
                 <div className='error' >{err2}</div>
 
                 <br></br>
-                <label>
-                    Password:
-                </label><br></br>
-                <input type='password' name='password' placeholder='Password' onChange={ChangeInput} minLength='8' maxLength='25' /><br></br>
+                <div style={{ display: 'flex', alignItems: "baseline", justifyContent: "space-between" }}>
+                    <label>
+                        Password:
+                    </label>
+                    <div style={{display: "flex", alignItems: "center"}}>
+                        <input type='checkbox' onChange={ShowOrHide}/>
+                        <label>{text}</label><br></br>
+                    </div>
+                </div>
+                <input type={hide} name='password' placeholder='Password' onChange={ChangeInput} minLength='8' maxLength='25' /><br></br>
+
                 <div className='error'>{err3}</div><br></br>
 
                 <div className='btn-div'>
