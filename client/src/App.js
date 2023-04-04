@@ -19,13 +19,16 @@ function App() {
   const [coin, setCoin] = useState({}); // coin detail
 
   let [user, setUser] = useState({
-    email: '', // sign-up
-    username: '', // sign-up
-    password: '', // sign-up
-    emailorname: "", // sign-in
-    logpassword: "", // sign-in
-    login: false,
-    imgUrl: '',
+    email: '', // sign-up input change
+    username: '', // sign-up change
+    password: '', // sign-up change
+    emailorname: "", // sign-in change
+    logpassword: "", // sign-in change
+    // after signed
+    name: "", 
+    signedEmail: "",
+    login: false,  
+    imgUrl: "",
   });
 
   let data = {
@@ -36,12 +39,13 @@ function App() {
     coinOfTypes, setCoinOfTypes
   }
 
+
   useEffect(() => {
     let res = axios.get('http://localhost:400/');
     res.then(res => setCoinOfTypes(res.data));
 
     let res1 = axios.get('http://localhost:400/cointypes');
-        res1.then(res => setCoinTypes(res.data));
+        res1.then(res => setCoinTypes(res.data));       
 
   }, []);
 
