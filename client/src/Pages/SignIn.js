@@ -2,12 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import context from "../Context/Context";
 import "./SignIn.css";
 import UserProfile from '../Pages/UserProfile';
-
 import axios from "axios";
 // import jwt_decode from 'jwt-decode'
 import jwtDecode from "jwt-decode";
 // import {GoogleLogin} from 'react-google-login'
 import { GoogleOAuthProvider, GoogleLogin, googleLogout } from "@react-oauth/google"
+import profile from '../../src/Pictures/defprofile.png'
 
 let SignIn = () => {
 
@@ -37,7 +37,7 @@ let SignIn = () => {
 
     useEffect(() => {
         /*global google*/
-        google?.accounts.id.initialize({
+        google.accounts.id.initialize({
             client_id: "438501167667-non433gnud5b97kb20qpq6d46bqabi76.apps.googleusercontent.com",
             callback: handleCallbackResponse
         })
@@ -46,7 +46,7 @@ let SignIn = () => {
             document.getElementById("signinDiv"),
             { theme: "filled_black", size: "large", text: "continue_with" }
         );
-    }, []);
+    }, [user]);
 
     const ChangeInput = (e) => {
         let { name, value } = e.target;
@@ -122,7 +122,12 @@ let SignIn = () => {
                 // console.log(res.data);
                 if (res.status == 200) {
                     alert("Success signed")
-                    user.login = true;
+                    setUser({
+                        name: res.data.Username,
+                        signedEmail: res.data.Email,
+                        login: true,
+                        imgUrl: profile
+                    })
                 }
             }).catch(err => {
                 alert(err.response.data);
@@ -143,9 +148,9 @@ let SignIn = () => {
         return str?.trim().length == 0;
     }
 
-    function isEmail(str) {
-        return str.includes("@");
-    }
+    // function isEmail(str) {
+    //     return str.includes("@");
+    // }
     function GetLenWithoutSpace(str) {
         str = str.split('');
         // console.log(str);
