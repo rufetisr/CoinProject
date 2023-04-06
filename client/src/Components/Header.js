@@ -2,6 +2,8 @@ import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
 import './Header.css';
 import context from '../Context/Context';
+import defpicture from '../../src/Pictures/defprofile.png'
+
 // import { Link } from 'react-router-dom';
 
 const Header = () => {
@@ -28,7 +30,7 @@ const Header = () => {
                                         <p style={{marginRight: "-25px"}}>
                                             {user.name.split(" ")[0].charAt(0).toUpperCase() + user.name.split(" ")[0].slice(1)}
                                         </p>
-                                        <img style={{width: "0px", height: "30px",padding: "0px", borderRadius: "50%"}} src={user.imgUrl} alt='prof'></img>
+                                        <img style={{width: "0px", height: "30px",padding: "0px", borderRadius: "50%"}} src={user.imgUrl ? user.imgUrl : defpicture} alt='prof'></img>
                                     </div>
                                     :
                                     <span>Sign in</span>
