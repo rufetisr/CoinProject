@@ -8,6 +8,8 @@ import jwtDecode from "jwt-decode";
 // import {GoogleLogin} from 'react-google-login'
 import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google"
 import defpicture from '../../src/Pictures/defprofile.png'
+import LinktoSignPages from "../Components/LinktoSignPages";
+import HorizontalLine from "../Components/HorizontalLine";
 
 let SignIn = () => {
 
@@ -132,7 +134,7 @@ let SignIn = () => {
                         login: true,
                         imgUrl: ''
                     })
-                    
+
                 }
             }).catch(err => {
                 alert(err.response.data);
@@ -185,7 +187,7 @@ let SignIn = () => {
 
 
     return (
-        <GoogleOAuthProvider  clientId="438501167667-non433gnud5b97kb20qpq6d46bqabi76.apps.googleusercontent.com">
+        <GoogleOAuthProvider clientId="438501167667-non433gnud5b97kb20qpq6d46bqabi76.apps.googleusercontent.com">
             <div className="signin-div">
                 {
                     user.login ?
@@ -194,20 +196,17 @@ let SignIn = () => {
                         <>
                             <h2>SignIn</h2>
                             <form onSubmit={Submit}>
-                                <label>
-                                    Email or Username:
-                                </label><br></br>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', columnGap: '25px', alignItems: 'baseline' }}>
+                                    <label className='lbl-input'>
+                                        Email or Username:
+                                    </label>
+                                    <LinktoSignPages text='Need an account?' route='/sign-up' routeContext='Sign up' />
+                                </div>
                                 <input type='text' name='emailorname' placeholder='Email or Username' minLength='3' maxLength='40' onChange={ChangeInput} />
                                 <div className="error">{err1}</div>
                                 <br></br>
-                                {/* <label>
-                    Username:
-                    </label><br></br>
-                    <input type='text' name='username' placeholder='Username' onChange={ChangeInput} minLength='3' maxLength='15' />
-                    <div className='error' >{err2}</div>
-                    
-                <br></br> */}
-                                <label>
+
+                                <label className='lbl-input'>
                                     Password:
                                 </label><br></br>
                                 <input type='password' name='logpassword' placeholder='Password' minLength='8' maxLength='25' onChange={ChangeInput} /><br></br>
@@ -216,22 +215,19 @@ let SignIn = () => {
                                 <div className='btn-div'>
                                     <button type='submit'>Sign In</button>
                                 </div><br />
-                                <hr /><br />
-                                <GoogleLogin
+
+                                <HorizontalLine/>
+                                <br></br>
+                                <GoogleLogin size="large"
                                     onSuccess={LoginSuccess}
                                     onError={LoginFail}
                                     // auto_select='true'
-                                    width="50%"
-                                    useOneTap='true'
+                                    width="295px"
+                                    useOneTap
                                     context="Sign in"
-                                    
-                                    // cancel_on_tap_outside='true'
-                                    
+                                    logo_alignment="center"
+                                // cancel_on_tap_outside='true'
                                 />
-                                {/* <div id="signinDiv">
-
-                            </div> */}
-
                             </form>
                         </>
                 }

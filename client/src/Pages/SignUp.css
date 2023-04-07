@@ -65,3 +65,8 @@ form  label{
     color: red;
     margin-left: 3px;
 }
+
+.lbl-input{
+    font-weight: bold;
+}
+

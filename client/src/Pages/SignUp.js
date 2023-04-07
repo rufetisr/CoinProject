@@ -2,6 +2,12 @@ import React, { isValidElement, useRef, useContext, useState } from 'react'
 import "./SignUp.css"
 import context from '../Context/Context';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import SignIn from './SignIn';
+import LinktoSignPages from '../Components/LinktoSignPages';
+import HorizontalLine from '../Components/HorizontalLine';
+import GoogleButton from '../Components/GoogleButton';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 function SignUp() {
     let { user, setUser } = useContext(context);
@@ -13,15 +19,15 @@ function SignUp() {
     const [text, setText] = useState("Show"); // password show or hide
 
 
-    let ShowOrHide = (e)=>{
-       if (e.target.checked) {
-        setHide("text");
-        setText("Hide")
-       }
-       else{
-        setHide("password");
-        setText("Show")
-       }
+    let ShowOrHide = (e) => {
+        if (e.target.checked) {
+            setHide("text");
+            setText("Hide")
+        }
+        else {
+            setHide("password");
+            setText("Show")
+        }
     }
 
     let onSubmit = (e) => {
@@ -160,41 +166,49 @@ function SignUp() {
     }
 
     return (
-        <div className='signup-div'>
-            <h2>Sign Up</h2>
-            <form onSubmit={onSubmit}>
+        <GoogleOAuthProvider clientId="438501167667-non433gnud5b97kb20qpq6d46bqabi76.apps.googleusercontent.com">
 
-                <label>
-                    Email:
-                </label><br></br>
-                <input type='email' name='email' placeholder='Email' onChange={ChangeInput} minLength='4' maxLength='40' />
-                <div className='error' >{err1}</div>
-                <br></br>
-                <label>
-                    Username:
-                </label><br></br>
-                <input type='text' name='username' placeholder='Username' onChange={ChangeInput} minLength='3' maxLength='15' />
-                <div className='error' >{err2}</div>
-
-                <br></br>
-                <div style={{ display: 'flex', alignItems: "baseline", justifyContent: "space-between" }}>
-                    <label>
-                        Password:
-                    </label>
-                    <div style={{display: "flex", alignItems: "center"}}>
-                        <input type='checkbox' onChange={ShowOrHide}/>
-                        <label>{text}</label><br></br>
+            <div className='signup-div'>
+                <h2>Sign Up</h2>
+                <form onSubmit={onSubmit}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', columnGap: '25px', alignItems: 'baseline' }}>
+                        <label className='lbl-input'>
+                            Email:
+                        </label>
+                        <LinktoSignPages text='Already have an account?' route='/sign-in' routeContext='Log in' />
                     </div>
-                </div>
-                <input type={hide} name='password' placeholder='Password' onChange={ChangeInput} minLength='8' maxLength='25' /><br></br>
 
-                <div className='error'>{err3}</div><br></br>
+                    <input type='email' name='email' placeholder='Email' onChange={ChangeInput} minLength='4' maxLength='40' />
+                    <div className='error' >{err1}</div>
+                    <br></br>
+                    <label className='lbl-input'>
+                        Username:
+                    </label><br></br>
+                    <input type='text' name='username' placeholder='Username' onChange={ChangeInput} minLength='3' maxLength='15' />
+                    <div className='error' >{err2}</div>
 
-                <div className='btn-div'>
-                    <button type='submit'>Sign Up</button>
-                </div>
-            </form>
-        </div>
+                    <br></br>
+                    <div style={{ display: 'flex', alignItems: "baseline", justifyContent: "space-between" }}>
+                        <label className='lbl-input'>
+                            Password:
+                        </label>
+                        <div style={{ display: "flex", alignItems: "center" }}>
+                            <input type='checkbox' onChange={ShowOrHide} />
+                            <label>{text}</label><br></br>
+                        </div>
+                    </div>
+                    <input type={hide} name='password' placeholder='Password' onChange={ChangeInput} minLength='8' maxLength='25' /><br></br>
+
+                    <div className='error'>{err3}</div><br></br>
+
+                    <div className='btn-div'>
+                        <button type='submit'>Sign Up</button>
+                    </div><br></br>
+                    <HorizontalLine />
+                    <GoogleButton />
+                </form>
+            </div>
+        </GoogleOAuthProvider>
     )
 }
 
