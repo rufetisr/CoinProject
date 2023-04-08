@@ -55,6 +55,8 @@ function SignUp() {
         else if (err1 == '' && err2 == '' && err3 == '') {
             console.log('Access');
             console.log(user);
+
+            user.createAccTime = getCurrentDateTime();
             let res = axios.post('http://localhost:400/signup', {
                 user
             })
@@ -94,6 +96,10 @@ function SignUp() {
         }
     }
 
+    let getCurrentDateTime = () => {
+        let date = new Date();
+        return date.getFullYear() + "/" + (date.getMonth() + 1) + '/' + date.getDate() + " " + date.toTimeString().slice(0, 8);
+    }
 
     function GetLenWithoutSpace(str) {
         str = str.split('');
@@ -204,7 +210,7 @@ function SignUp() {
                     <div className='btn-div'>
                         <button type='submit'>Sign Up</button>
                     </div><br></br>
-                    <HorizontalLine />
+                    <HorizontalLine /><br></br>
                     <GoogleButton />
                 </form>
             </div>

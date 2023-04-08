@@ -10,6 +10,7 @@ import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google"
 import defpicture from '../../src/Pictures/defprofile.png'
 import LinktoSignPages from "../Components/LinktoSignPages";
 import HorizontalLine from "../Components/HorizontalLine";
+import { DATETIME } from "mysql/lib/protocol/constants/types";
 
 let SignIn = () => {
 
@@ -128,13 +129,21 @@ let SignIn = () => {
                 // console.log(res.data);
                 if (res.status == 200) {
                     alert("Success signed")
+                    let curTime = getCurrentDateTime();
+
                     setUser({
                         name: res.data.Username,
                         signedEmail: res.data.Email,
                         login: true,
-                        imgUrl: ''
+                        imgUrl: '',
+                        logTime: curTime
                     })
 
+                    axios.post('http://localhost:400/loginTime', {
+                      name: res.data.Username,
+                      email: res.data.Email,
+                      logTime: curTime
+                    });
                 }
             }).catch(err => {
                 alert(err.response.data);
@@ -174,13 +183,23 @@ let SignIn = () => {
         // console.log(res);
         let userObj = jwtDecode(res.credential);
         console.log(userObj);
+
         setUser({
             name: userObj.name,
             imgUrl: userObj.picture,
             login: userObj.email_verified,
             signedEmail: userObj.email,
+            logTime: getCurrentDateTime()
         })
+
+
     }
+
+    let getCurrentDateTime = () => {
+        let date = new Date();
+        return date.getFullYear() + "/" + (date.getMonth() + 1) + '/' + date.getDate() + " " + date.toTimeString().slice(0, 8);
+    }
+
     const LoginFail = (res) => { // google send response
         console.log(res);
     }
@@ -216,7 +235,7 @@ let SignIn = () => {
                                     <button type='submit'>Sign In</button>
                                 </div><br />
 
-                                <HorizontalLine/>
+                                <HorizontalLine />
                                 <br></br>
                                 <GoogleLogin size="large"
                                     onSuccess={LoginSuccess}

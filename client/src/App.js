@@ -29,6 +29,8 @@ function App() {
     signedEmail: "",
     login: false,  
     imgUrl: "",
+    logTime: "",
+    createAccTime: ""
   });
 
   let data = {

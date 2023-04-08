@@ -47,10 +47,10 @@ app.listen(400, () => {
 app.post('/signup', (req, res) => {
     console.log('apply api');
     console.log(req.body);
-    let { email, username, password } = req.body.user;
+    let { email, username, password, createAccTime } = req.body.user;
 
-    connection.query(`insert into Users (email, username, password) values
-    ('${email}', '${username}', '${password}');`, (err, result) => {
+    connection.query(`insert into Users (email, username, password, SignUpTime) values
+    ('${email}', '${username}', '${password}', '${createAccTime}');`, (err, result) => {
         if (!err) {
             console.log(result);
             res.status(200).send('Success')
@@ -67,13 +67,30 @@ app.post('/signup', (req, res) => {
     // res.send('Api running');
 })
 
+
+app.post('/loginTime', (req, res)=>{
+    let {name, email, logTime} = req.body;
+    console.log(logTime + "," + name + ',' + email);
+    // console.log(user);
+    connection.query(`update Users
+    set LogTime = "${logTime}"
+    where Username = '${name}'`, (err, data)=>{
+        if (!err) {
+            res.status(200).send('Log time changed');
+        }
+        else{
+            res.status(500).send();
+        }
+    })
+})
+
 app.post('/login', (req, res) => {
-    let { name, password } = req.body;
+    let { name, password} = req.body;
 
     connection.query(`select * from
     users;`, (err, data) => {
         if (!err) {
-            console.log(data);
+            // console.log(data);
             // res.send(data);
             let user = data.find((item) => {
                 return (item.Email == name || item.Username == name) && item.Password == password;
@@ -88,6 +105,7 @@ app.post('/login', (req, res) => {
                     ...user,
                     UserId: 45444 + user.UserId
                 }
+
                 res.status(200).send(user);
             }
             else {
@@ -170,7 +188,7 @@ connection.query(`select *
     // console.log('get coins');
     if (!err) {
         coins = data;
-        console.log(coins);
+        // console.log(coins);
         // res.send(coins);
     }
     else {
