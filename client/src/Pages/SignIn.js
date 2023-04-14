@@ -130,12 +130,12 @@ let SignIn = () => {
                 if (res.status == 200) {
                     alert("Success signed")
                     let curTime = getCurrentDateTime();
-
+                    console.log(res.data.Picture);
                     setUser({
                         name: res.data.Username,
                         signedEmail: res.data.Email,
                         login: true,
-                        imgUrl: '',
+                        imgUrl: res.data.Picture,
                         logTime: curTime
                     })
 

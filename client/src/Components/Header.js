@@ -16,9 +16,9 @@ const Header = () => {
                     <li>
                         <Link to='/'>Home</Link>
                     </li>
-                    <li>
+                    {/* <li>
                         About us
-                    </li>
+                    </li> */}
                     <li>
                         <Link to='sign-up'>Sign Up</Link>
                     </li>
@@ -30,7 +30,7 @@ const Header = () => {
                                         <p style={{marginRight: "-25px"}}>
                                             {user.name.split(" ")[0].charAt(0).toUpperCase() + user.name.split(" ")[0].slice(1)}
                                         </p>
-                                        <img style={{width: "0px", height: "30px",padding: "0px", borderRadius: "50%"}} src={user.imgUrl ? user.imgUrl : defpicture} alt='prof'></img>
+                                        <img style={{width: 'min-content', height: "30px",padding: "0px", borderRadius: "50%"}} src={user.imgUrl != 'undefined' ? user.imgUrl : defpicture} alt='prof'></img>
                                     </div>
                                     :
                                     <span>Sign in</span>

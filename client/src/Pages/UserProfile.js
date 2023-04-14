@@ -17,7 +17,7 @@ const UserProfile = () => {
       <h2>{user.name.charAt(0).toUpperCase() + user.name.slice(1)}</h2>
       <p>{user.signedEmail}</p>
       <p>{user.password}</p>
-      <img className='profile-img' src={user.imgUrl ? user.imgUrl : defpicture} alt='userImg'></img>
+      <img className='profile-img' src={user.imgUrl != 'undefined' ? user.imgUrl : defpicture} alt='userImg'></img>
 
       <button onClick={(e) => handleSignout(e)}>Sign Out</button>
      

@@ -47,10 +47,10 @@ app.listen(400, () => {
 app.post('/signup', (req, res) => {
     console.log('apply api');
     console.log(req.body);
-    let { email, username, password, createAccTime } = req.body.user;
+    let { email, username, password, createAccTime, imgUrl } = req.body.user;
 
-    connection.query(`insert into Users (email, username, password, SignUpTime) values
-    ('${email}', '${username}', '${password}', '${createAccTime}');`, (err, result) => {
+    connection.query(`insert into Users (email, username, password, SignUpTime, Picture) values
+    ('${email}', '${username}', '${password}', '${createAccTime}', '${imgUrl}');`, (err, result) => {
         if (!err) {
             console.log(result);
             res.status(200).send('Success')

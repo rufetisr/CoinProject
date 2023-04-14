@@ -6,8 +6,9 @@ import { Link } from 'react-router-dom';
 import SignIn from './SignIn';
 import LinktoSignPages from '../Components/LinktoSignPages';
 import HorizontalLine from '../Components/HorizontalLine';
-import GoogleButton from '../Components/GoogleButton';
-import { GoogleOAuthProvider } from '@react-oauth/google';
+// import GoogleButton from '../Components/GoogleButton';
+import jwtDecode from 'jwt-decode';
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 
 function SignUp() {
     let { user, setUser } = useContext(context);
@@ -171,6 +172,36 @@ function SignUp() {
         })
     }
 
+    const SignUpSuccess = (res) => { // google send response
+        // console.log(res);user.createAccTime = getCurrentDateTime();
+        
+        let userObj = jwtDecode(res.credential);
+        console.log(userObj);
+        user = {
+            username: userObj.name,
+            imgUrl: userObj.picture,
+            login: userObj.email_verified,
+            email: userObj.email,
+            createAccTime: getCurrentDateTime(),
+            password: "googledefault123"
+        };
+
+        axios.post('http://localhost:400/signup', {
+            user
+        }).then(res => {
+            if (res.status == 200) {
+                alert('Success added user');                
+            }
+        }).catch((err) => {
+            if (err.response.data.errno == 1062) {
+                alert("This account was found in another user!");
+            }
+        })
+    }
+    const SignUpFail = (res) => { // google send response
+        console.log(res);
+    }
+
     return (
         <GoogleOAuthProvider clientId="438501167667-non433gnud5b97kb20qpq6d46bqabi76.apps.googleusercontent.com">
 
@@ -211,7 +242,16 @@ function SignUp() {
                         <button type='submit'>Sign Up</button>
                     </div><br></br>
                     <HorizontalLine /><br></br>
-                    <GoogleButton />
+                    <GoogleLogin size="large"
+                        onSuccess={SignUpSuccess}
+                        onError={SignUpFail}
+                        // auto_select='true'
+                        width="295px"
+                        useOneTap
+                        context='signup'
+                        logo_alignment="center"
+                    // cancel_on_tap_outside='true'
+                    />
                 </form>
             </div>
         </GoogleOAuthProvider>
