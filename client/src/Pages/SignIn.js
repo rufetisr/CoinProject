@@ -183,15 +183,20 @@ let SignIn = () => {
         // console.log(res);
         let userObj = jwtDecode(res.credential);
         console.log(userObj);
-
+        let curTime = getCurrentDateTime();
         setUser({
             name: userObj.name,
             imgUrl: userObj.picture,
             login: userObj.email_verified,
             signedEmail: userObj.email,
-            logTime: getCurrentDateTime()
+            logTime: curTime
         })
 
+        axios.post('http://localhost:400/loginTime',{
+            name: userObj.name,
+            email: userObj.email,
+            logTime: curTime
+        })
 
     }
 
