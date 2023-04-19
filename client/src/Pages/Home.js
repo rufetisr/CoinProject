@@ -6,7 +6,7 @@ import axios from "axios";
 import './Home.css'
 
 function Home() {
-    let { coinTypes, setCoinTypes } = useContext(context);
+    let { coinTypes, setCoinTypes, user, setUser } = useContext(context);
 
     let getCoinTypes = async () => {
         // let res = axios.get('http://localhost:400/cointypes');
@@ -33,7 +33,15 @@ function Home() {
                             <img id="coin-img" src={item.Img} alt={item.TypeName.substring(0, 6)} ></img>
                         </div>)
                 })}
+                {user.adminlogin == true ?
+                
+                    (<div>
+                        <input type="text" placeholder="Coin Type name"></input>
+
+                    </div>) : null
+                }
             </div>
+
         </div>
     )
 }

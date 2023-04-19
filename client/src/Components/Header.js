@@ -25,12 +25,12 @@ const Header = () => {
                     <li>
                         <Link to='sign-in'>
                             {
-                                user.login ?
+                                user.login || user.adminlogin ?
                                     <div style={{display: 'flex', alignItems: "center", width: "90px"}}>
                                         <p style={{marginRight: "-25px"}}>
                                             {user.name.split(" ")[0].charAt(0).toUpperCase() + user.name.split(" ")[0].slice(1)}
                                         </p>
-                                        <img style={{width: 'min-content', height: "30px",padding: "0px", borderRadius: "50%"}} src={user.imgUrl != 'undefined' ? user.imgUrl : defpicture} alt='prof'></img>
+                                        <img style={{width: 'min-content', height: "30px",padding: "0px", borderRadius: "50%"}} src={user.imgUrl != 'undefined' && useContext.imgUrl != null ? user.imgUrl : defpicture} alt='prof'></img>
                                     </div>
                                     :
                                     <span>Sign in</span>

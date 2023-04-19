@@ -18,6 +18,21 @@ let SignIn = () => {
 
     const [err1, seterr1] = useState();
     const [err2, seterr2] = useState();
+
+
+    const [hide, setHide] = useState("password");
+    const [text, setText] = useState("Show"); // password show or hide
+
+    let ShowOrHide = (e) => {
+        if (e.target.checked) {
+            setHide("text");
+            setText("Hide")
+        }
+        else {
+            setHide("password");
+            setText("Show")
+        }
+    }
     // const [userLog, setUserLog] = useState({
 
     // }); // for sign in
@@ -128,6 +143,12 @@ let SignIn = () => {
             }).then(res => {
                 if (res.status == 200) {
                     alert('Admiin logged');
+                    setUser({
+                        name: res.data.AdminName,
+                        signedEmail: res.data.Email,
+                        imgUrl: res.data.Picture,
+                        adminlogin: true
+                    })
                 }
             }).catch(err => {
                 // alert(err.response.data);
@@ -225,7 +246,7 @@ let SignIn = () => {
         <GoogleOAuthProvider clientId="438501167667-non433gnud5b97kb20qpq6d46bqabi76.apps.googleusercontent.com">
             <div className="signin-div">
                 {
-                    user.login ?
+                    user.login || user.adminlogin ?
                         <UserProfile />
                         :
                         <>
@@ -240,11 +261,17 @@ let SignIn = () => {
                                 <input type='text' name='emailorname' placeholder='Email or Username' minLength='3' maxLength='40' onChange={ChangeInput} />
                                 <div className="error">{err1}</div>
                                 <br></br>
+                                <div style={{ display: 'flex', alignItems: "baseline", justifyContent: "space-between" }}>
+                                    <label className='lbl-input'>
+                                        Password:
+                                    </label>
+                                    <div style={{ display: "flex", alignItems: "center" }}>
+                                        <input type='checkbox' onChange={ShowOrHide} />
+                                        <label>{text}</label><br></br>
+                                    </div>
+                                </div>
+                                <input type={hide} name='logpassword' placeholder='Password' minLength='8' maxLength='25' onChange={ChangeInput} /><br></br>
 
-                                <label className='lbl-input'>
-                                    Password:
-                                </label><br></br>
-                                <input type='password' name='logpassword' placeholder='Password' minLength='8' maxLength='25' onChange={ChangeInput} /><br></br>
                                 <div className="error">{err2}</div><br></br>
 
                                 <div className='btn-div'>

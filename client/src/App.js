@@ -17,7 +17,10 @@ function App() {
   const [coinTypes, setCoinTypes] = useState([]); // coin types
   const [coinOfTypes, setCoinOfTypes] = useState([]); // for routes to details
   const [coin, setCoin] = useState({}); // coin detail
-  const [isAdmin, setAdmin] = useState({}); 
+  // const [admin, setAdmin] = useState({
+  //   login: false,
+
+  // }); 
 
   let [user, setUser] = useState({
     email: '', // sign-up input change
@@ -28,10 +31,11 @@ function App() {
     // after signed
     name: "", 
     signedEmail: "",
-    login: false,  
+    login: false,  //userlogin
     imgUrl: "",
     logTime: "",
-    createAccTime: ""
+    createAccTime: "",
+    adminlogin: false,
   });
 
   let data = {
@@ -40,7 +44,7 @@ function App() {
     coinTypes, setCoinTypes,
     coin, setCoin,
     coinOfTypes, setCoinOfTypes,
-    isAdmin, setAdmin
+
   }
 
 
