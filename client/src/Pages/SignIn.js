@@ -122,41 +122,52 @@ let SignIn = () => {
         }
         else if (err1 == '' && err2 == '') {
             console.log(user);
-            axios.post("http://localhost:400/login", {
+            axios.post("http://localhost:400/isAdmin", {
                 name: user.emailorname,
                 password: user.logpassword
             }).then(res => {
-                // console.log(res.data);
                 if (res.status == 200) {
-                    alert("Success signed")
-                    let curTime = getCurrentDateTime();
-                    console.log(res.data.Picture);
-                    setUser({
-                        name: res.data.Username,
-                        signedEmail: res.data.Email,
-                        login: true,
-                        imgUrl: res.data.Picture,
-                        logTime: curTime
-                    })
-
-                    axios.post('http://localhost:400/loginTime', {
-                      name: res.data.Username,
-                      email: res.data.Email,
-                      logTime: curTime
-                    });
+                    alert('Admiin logged');
                 }
             }).catch(err => {
-                alert(err.response.data);
-            })
+                // alert(err.response.data);
+                axios.post("http://localhost:400/login", {
+                    name: user.emailorname,
+                    password: user.logpassword
+                }).then(res => {
+                    // console.log(res.data);
+                    if (res.status == 200) {
+                        alert("Success signed")
+                        let curTime = getCurrentDateTime();
+                        // console.log(res.data.Picture);
+                        setUser({
+                            name: res.data.Username,
+                            signedEmail: res.data.Email,
+                            login: true,
+                            imgUrl: res.data.Picture,
+                            logTime: curTime
+                        })
 
-            e.target.emailorname.value = '';
-            e.target.logpassword.value = '';
+                        axios.post('http://localhost:400/loginTime', {
+                            name: res.data.Username,
+                            email: res.data.Email,
+                            logTime: curTime
+                        });
+                    }
+                }).catch(err => {
+                    alert(err.response.data);
+                })
+
+                e.target.emailorname.value = '';
+                e.target.logpassword.value = '';
+
+                user = {
+                    emailorname: "",
+                    logpassword: ""
+                }
+            });
 
 
-            user = {
-                emailorname: "",
-                logpassword: ""
-            }
         }
     }
 
@@ -192,7 +203,7 @@ let SignIn = () => {
             logTime: curTime
         })
 
-        axios.post('http://localhost:400/loginTime',{
+        axios.post('http://localhost:400/loginTime', {
             name: userObj.name,
             email: userObj.email,
             logTime: curTime

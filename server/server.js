@@ -124,6 +124,30 @@ app.post('/login', (req, res) => {
     })
 })
 
+app.post('/isAdmin', (req, res)=>{
+    let {name, password} = req.body;
+    connection.query(`select * 
+    from Admin;`, (err, data)=>{
+        if (!err) {
+           let admin = data.find((item)=>{
+               return (item.Email == name || item.AdminName == name) && item.Password == password;
+            })
+
+            if (admin != undefined) {
+                res.status(200).send(admin);
+            }
+            else{
+                try {
+                    throw res.status(404).send(`Not Found this user!`);
+                } catch (error) {
+                    console.log("Not found admin");
+                }
+            }
+        }
+    })
+
+})
+
 app.get('/cointypes', (req, res) => {
     console.log('cointypes');
     connection.query(`select *

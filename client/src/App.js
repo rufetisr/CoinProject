@@ -17,6 +17,7 @@ function App() {
   const [coinTypes, setCoinTypes] = useState([]); // coin types
   const [coinOfTypes, setCoinOfTypes] = useState([]); // for routes to details
   const [coin, setCoin] = useState({}); // coin detail
+  const [isAdmin, setAdmin] = useState({}); 
 
   let [user, setUser] = useState({
     email: '', // sign-up input change
@@ -38,7 +39,8 @@ function App() {
     user, setUser,
     coinTypes, setCoinTypes,
     coin, setCoin,
-    coinOfTypes, setCoinOfTypes
+    coinOfTypes, setCoinOfTypes,
+    isAdmin, setAdmin
   }
 
 
