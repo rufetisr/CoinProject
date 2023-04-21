@@ -17,6 +17,11 @@ function App() {
   const [coinTypes, setCoinTypes] = useState([]); // coin types
   const [coinOfTypes, setCoinOfTypes] = useState([]); // for routes to details
   const [coin, setCoin] = useState({}); // coin detail
+  const [newCoinType, setNewCoinType] = useState({
+    name: "",
+    img: "",
+
+  });
   // const [admin, setAdmin] = useState({
   //   login: false,
 
@@ -29,7 +34,7 @@ function App() {
     emailorname: "", // sign-in change
     logpassword: "", // sign-in change
     // after signed
-    name: "", 
+    name: "",
     signedEmail: "",
     login: false,  //userlogin
     imgUrl: "",
@@ -44,7 +49,7 @@ function App() {
     coinTypes, setCoinTypes,
     coin, setCoin,
     coinOfTypes, setCoinOfTypes,
-
+    newCoinType, setNewCoinType
   }
 
 
@@ -53,7 +58,7 @@ function App() {
     res.then(res => setCoinOfTypes(res.data));
 
     let res1 = axios.get('http://localhost:400/cointypes');
-        res1.then(res => setCoinTypes(res.data));       
+    res1.then(res => setCoinTypes(res.data));
 
   }, []);
 
@@ -68,15 +73,15 @@ function App() {
           <Route path='/sign-in' element={<SignIn />}></Route>
           {
             coinTypes.map((item) => {
-              return(
-                <Route key={item.TypeId} path={item.Path} element={<Coin/>}></Route>
+              return (
+                <Route key={item.TypeId} path={item.Path} element={<Coin />}></Route>
               )
-            })   
+            })
           }
-          {            
-            coinOfTypes.map((item)=>{
-              return(
-                <Route key={item.CoinId} path={"/" + item.TypeName + "/" + item.CoinId} element={<CoinDetails/>}></Route>
+          {
+            coinOfTypes.map((item) => {
+              return (
+                <Route key={item.CoinId} path={"/" + item.TypeName + "/" + item.CoinId} element={<CoinDetails />}></Route>
               )
             })
           }

@@ -1,24 +1,40 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import Search from "../Components/Search";
 import context from "../Context/Context";
 import axios from "axios";
 import './Home.css'
+import FileUploader from "../Components/FileUploader";
 
 function Home() {
-    let { coinTypes, setCoinTypes, user, setUser } = useContext(context);
-
-    let getCoinTypes = async () => {
-        // let res = axios.get('http://localhost:400/cointypes');
-        // res.then(res => setCoinTypes(res.data));
-        // return res;
-    }
+    let { coinTypes, setCoinTypes, user, setUser, newCoinType, setNewCoinType } = useContext(context);
+    const [img, setimg] = useState("");
+    const [img1, setimg1] = useState("");
+    // let getCoinTypes = async () => {
+    // let res = axios.get('http://localhost:400/cointypes');
+    // res.then(res => setCoinTypes(res.data));
+    // return res;
+    // }
     useEffect(() => {
         console.log('home useffect');
         // getCoinTypes();
 
     }, []);
 
+    let AddCoinType = (e) => {
+        e.preventDefault();
+    }
+
+    let TypeChange = (e) => {
+        let { name, value } = e.target;
+        if (name == 'imgFile') {
+            console.log(e.target);
+            setimg(URL.createObjectURL(e.target.files[0]));
+        }
+        else {
+            console.log(value);
+        }
+    }
 
     return (
         <div className="home">
@@ -34,11 +50,16 @@ function Home() {
                         </div>)
                 })}
                 {user.adminlogin == true ?
-                
-                    (<div>
-                        <input type="text" placeholder="Coin Type name"></input>
 
-                    </div>) : null
+                    (<form className="add-coin">
+                        <input name="typeName" onChange={TypeChange} type="text" placeholder="Coin Type name"></input>
+                        {/* <input name="imgFile" type="file" onChange={TypeChange} /><br></br> */}
+                        <FileUploader state ={setimg}/>
+                        <img id="upload-img" src={img} alt="typeimg"></img>                        
+                        {/* <FileUploader state={setimg1}/>
+                        <img id="upload-img" src={img1}></img> */}
+                        <button onClick={AddCoinType}>Add</button>
+                    </form>) : null
                 }
             </div>
 

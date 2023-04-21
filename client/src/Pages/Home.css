@@ -18,3 +18,18 @@
     background-color: antiquewhite;
     padding: 13px;
 }
+
+.add-coin{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#upload-img{
+    border: 2px rgb(3, 8, 150);
+    border-style: dashed ;
+    width: 150px;
+    height: 150px;
+    align-self: center;
+    object-fit: contain;
+}
