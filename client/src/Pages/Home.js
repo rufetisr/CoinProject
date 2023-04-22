@@ -9,7 +9,10 @@ import FileUploader from "../Components/FileUploader";
 function Home() {
     let { coinTypes, setCoinTypes, user, setUser, newCoinType, setNewCoinType } = useContext(context);
     const [img, setimg] = useState("");
-    const [img1, setimg1] = useState("");
+    // const [img1, setimg1] = useState("");
+
+
+    // const [img1, setimg1] = useState("");
     // let getCoinTypes = async () => {
     // let res = axios.get('http://localhost:400/cointypes');
     // res.then(res => setCoinTypes(res.data));
@@ -23,6 +26,20 @@ function Home() {
 
     let AddCoinType = (e) => {
         e.preventDefault();
+        // var [img1, setimg1] = useState("");
+        console.log(e.target);
+
+        setUser({
+            ...user,
+            addCoinType: true
+        })
+        console.log(user);
+
+
+        e.target.imgFile.value = "";
+        e.target.typeName.value = "";
+        setimg();
+        
     }
 
     let TypeChange = (e) => {
@@ -32,7 +49,7 @@ function Home() {
             setimg(URL.createObjectURL(e.target.files[0]));
         }
         else {
-            console.log(value);
+            console.log(value); // typeName
         }
     }
 
@@ -51,19 +68,19 @@ function Home() {
                 })}
                 {user.adminlogin == true ?
 
-                    (<form className="add-coin">
+                    (<form className="add-coin" onSubmit={AddCoinType}>
                         <input name="typeName" onChange={TypeChange} type="text" placeholder="Coin Type name"></input>
                         {/* <input name="imgFile" type="file" onChange={TypeChange} /><br></br> */}
-                        <FileUploader state ={setimg}/>
-                        <img id="upload-img" src={img} alt="typeimg"></img>                        
+                        <FileUploader state={setimg} />
+                        <img id="upload-img" src={img} alt="typeimg"></img>
+                        <button>Add</button>
                         {/* <FileUploader state={setimg1}/>
                         <img id="upload-img" src={img1}></img> */}
-                        <button onClick={AddCoinType}>Add</button>
                     </form>) : null
                 }
             </div>
 
-        </div>
+        </div >
     )
 }
 

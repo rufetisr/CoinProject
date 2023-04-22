@@ -247,6 +247,7 @@ function SignUp() {
                         onError={SignUpFail}
                         // auto_select='true'
                         width="295px"
+                        shape="circle"
                         useOneTap
                         context='signup'
                         logo_alignment="center"

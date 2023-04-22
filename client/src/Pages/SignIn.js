@@ -286,6 +286,7 @@ let SignIn = () => {
                                     // auto_select='true'
                                     width="295px"
                                     useOneTap
+                                    shape="circle"
                                     context="Sign in"
                                     logo_alignment="center"
                                 // cancel_on_tap_outside='true'

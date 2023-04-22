@@ -1,8 +1,9 @@
 header{
     background-color: rgb(6, 6, 75);
     color: #fff;
+    opacity: 0.8;
     padding: 15px 10px;
-    position: fixed;
+    position: fixed;    
     width: 100%;
     z-index: 1;
     top: 0px;
