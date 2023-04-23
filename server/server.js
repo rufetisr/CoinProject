@@ -44,6 +44,32 @@ app.listen(400, () => {
 //     }
 // })
 
+app.post('/addcointype', (req, res)=>{
+    let {typeName, img} = req.body;
+    console.log(typeName.toLowerCase() + "\n" + img);
+    if (typeName.toLowerCase().search('coin')) {
+        console.log(true);
+    //    let index = typeName.toLowerCase().search('coins');
+       typeName = typeName.split("coin")[0].toLowerCase();
+        
+    }
+    console.log(typeName[0]);
+    connection.query(`insert into CoinType (TypeName, Img, Path) values
+    ('${typeName}', '${img}', '/${typeName}');`, (err, result)=>{
+        if (!err) {
+            console.log(result);
+            res.status(200).send('Succes');
+        }
+        else {
+            try {
+                throw res.status(500).send(err);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    })
+})
+
 app.post('/signup', (req, res) => {
     console.log('apply api');
     console.log(req.body);

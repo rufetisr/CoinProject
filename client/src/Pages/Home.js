@@ -29,17 +29,27 @@ function Home() {
         // var [img1, setimg1] = useState("");
         console.log(e.target);
 
-        setUser({
-            ...user,
-            addCoinType: true
-        })
+        // setUser({
+        //     ...user,
+        //     addCoinType: true
+        // })
         console.log(user);
 
+        axios.post('http://localhost:400/addcointype', {
+            img: img,
+            typeName: user.typeName
+        }).then(res=>{
+            alert('Success');
+        }).catch((err)=>{
+            if (err.response.data.errno == 1062) {
+                alert("These entries were found in another field!");
+            }
+        })
 
         e.target.imgFile.value = "";
         e.target.typeName.value = "";
         setimg();
-        
+
     }
 
     let TypeChange = (e) => {
@@ -47,10 +57,21 @@ function Home() {
         if (name == 'imgFile') {
             console.log(e.target);
             setimg(URL.createObjectURL(e.target.files[0]));
+            // user.imgFile = "value";
+            // setUser(
+            //     {
+            //         ...user,
+            //         imgFile: URL.createObjectURL(e.target.files[0])
+            //     });
         }
         else {
+            user.typeName = value;
             console.log(value); // typeName
         }
+        // setUser({
+        //     ...user,
+        //     [name]: value
+        // })
     }
 
     return (

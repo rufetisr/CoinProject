@@ -40,7 +40,10 @@ function App() {
     imgUrl: "",
     logTime: "",
     createAccTime: "",
+    // admin
     adminlogin: false,
+    typeName: "",
+    imgFile: "",
   });
 
   let data = {
