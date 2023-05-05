@@ -7,8 +7,10 @@ import './Home.css'
 import FileUploader from "../Components/FileUploader";
 
 function Home() {
-    let { coinTypes, setCoinTypes, user, setUser, newCoinType, setNewCoinType } = useContext(context);
+    let { coinTypes, setCoinTypes, user, setUser, newCoinType, setNewCoinType, coinTypesForSearch, setCoinTypesForSearch } = useContext(context);
     const [img, setimg] = useState("");
+    const [searchInput, setsearchInput] = useState("");
+    // var coinTypesForSearch = coinTypes;
     // const [img1, setimg1] = useState("");
 
 
@@ -18,17 +20,18 @@ function Home() {
     // res.then(res => setCoinTypes(res.data));
     // return res;
     // }
+    // console.log('ssssssssssss');
     useEffect(() => {
         console.log('home useffect');
+        //  coinTypesForSearch = coinTypes;
         // getCoinTypes();
 
     }, []);
 
     let AddCoinType = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         // var [img1, setimg1] = useState("");
         console.log(e.target);
-
         // setUser({
         //     ...user,
         //     addCoinType: true
@@ -38,9 +41,9 @@ function Home() {
         axios.post('http://localhost:400/addcointype', {
             img: img,
             typeName: user.typeName
-        }).then(res=>{
+        }).then(res => {
             alert('Success');
-        }).catch((err)=>{
+        }).catch((err) => {
             if (err.response.data.errno == 1062) {
                 alert("These entries were found in another field!");
             }
@@ -49,7 +52,7 @@ function Home() {
         e.target.imgFile.value = "";
         e.target.typeName.value = "";
         setimg();
-
+        // useEffect()
     }
 
     let TypeChange = (e) => {
@@ -57,12 +60,6 @@ function Home() {
         if (name == 'imgFile') {
             console.log(e.target);
             setimg(URL.createObjectURL(e.target.files[0]));
-            // user.imgFile = "value";
-            // setUser(
-            //     {
-            //         ...user,
-            //         imgFile: URL.createObjectURL(e.target.files[0])
-            //     });
         }
         else {
             user.typeName = value;
@@ -74,10 +71,21 @@ function Home() {
         // })
     }
 
+    let SearchClick = () => {
+        console.log(searchInput);
+        // coinTypesForSearch =  coinTypes;
+        console.log(coinTypesForSearch);
+
+        let filteredList = coinTypesForSearch.filter((coin) => {
+            let coinName = coin.TypeName.toLowerCase() + 'coins';
+            return coinName.indexOf(searchInput.toLowerCase()) > -1;
+        })
+        setCoinTypes(filteredList);
+    }
     return (
         <div className="home">
             <h1 className="home-h1">Homepage</h1>
-            <Search />
+            <Search inp={searchInput} setInp={setsearchInput} click={SearchClick} />
             <div style={{ display: 'flex', justifyContent: 'space-evenly', flexWrap: 'wrap', columnGap: "50px" }}>
                 {coinTypes.map((item, index) => {
                     return (

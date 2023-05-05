@@ -15,6 +15,7 @@ import SignIn from './Pages/SignIn';
 function App() {
   const [coins, setCoins] = useState([]); // list coins
   const [coinTypes, setCoinTypes] = useState([]); // coin types
+  const [coinTypesForSearch, setCoinTypesForSearch] = useState([]); // coin types
   const [coinOfTypes, setCoinOfTypes] = useState([]); // for routes to details
   const [coin, setCoin] = useState({}); // coin detail
   const [newCoinType, setNewCoinType] = useState({
@@ -52,7 +53,8 @@ function App() {
     coinTypes, setCoinTypes,
     coin, setCoin,
     coinOfTypes, setCoinOfTypes,
-    newCoinType, setNewCoinType
+    newCoinType, setNewCoinType,
+    coinTypesForSearch, setCoinTypesForSearch
   }
 
 
@@ -61,7 +63,10 @@ function App() {
     res.then(res => setCoinOfTypes(res.data));
 
     let res1 = axios.get('http://localhost:400/cointypes');
-    res1.then(res => setCoinTypes(res.data));
+    res1.then(res => {
+    setCoinTypesForSearch(res.data);
+      setCoinTypes(res.data);
+    });
 
   }, []);
 

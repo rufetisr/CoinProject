@@ -50,10 +50,10 @@ app.post('/addcointype', (req, res)=>{
     if (typeName.toLowerCase().search('coin')) {
         console.log(true);
     //    let index = typeName.toLowerCase().search('coins');
-       typeName = typeName.split("coin")[0].toLowerCase();
-        
+       typeName = typeName.split("coin")[0].toLowerCase().trim();
     }
-    console.log(typeName[0]);
+    // console.log(typeName + "f");
+
     connection.query(`insert into CoinType (TypeName, Img, Path) values
     ('${typeName}', '${img}', '/${typeName}');`, (err, result)=>{
         if (!err) {
@@ -64,7 +64,7 @@ app.post('/addcointype', (req, res)=>{
             try {
                 throw res.status(500).send(err);
             } catch (error) {
-                console.log(error);
+                console.log('Added coin type found another field!');
             }
         }
     })

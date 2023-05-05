@@ -9,7 +9,7 @@ const FileUploader = ({state}) => {
     }
     return (
         <div>
-            <input id='open-file' name="imgFile" type="file" f onChange={fileChange} />
+            <input id='open-file' name="imgFile" type="file"  onChange={fileChange} />
         </div>
     )
 }

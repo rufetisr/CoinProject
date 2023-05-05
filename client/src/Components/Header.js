@@ -16,12 +16,12 @@ const Header = () => {
                     <li>
                         <Link to='/'>Home</Link>
                     </li>
-                    {/* <li>
-                        About us
-                    </li> */}
                     <li>
-                        <Link to='sign-up'>Sign Up</Link>
+                        About us
                     </li>
+                    {/* <li>
+                        <Link to='sign-up'>Sign Up</Link>
+                    </li> */}
                     <li>
                         <Link to='sign-in'>
                             {
