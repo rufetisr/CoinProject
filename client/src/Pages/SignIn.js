@@ -243,7 +243,7 @@ let SignIn = () => {
 
 
     return (
-        <GoogleOAuthProvider clientId="438501167667-non433gnud5b97kb20qpq6d46bqabi76.apps.googleusercontent.com">
+        <GoogleOAuthProvider clientId="">
             <div className="signin-div">
                 {
                     user.login || user.adminlogin ?
